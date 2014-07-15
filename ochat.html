@@ -4,10 +4,21 @@
 
 <body>
   {{> hello}}
+  {{> lobby}}
 </body>
 
 <template name="hello">
+  <div>
   <h1>Hello World!</h1>
   {{greeting}}
   <input type="button" value="Click" />
+  </div>
+</template>
+
+<template name="lobby">
+  <div>
+  <h1>What's your name?</h1>
+  <input id="name" type="name" value="" />
+  <input type="button" value="Click" {{disabled}} />
+  </div>
 </template>
