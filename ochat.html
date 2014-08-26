@@ -5,6 +5,8 @@
 <body>
   {{> hello}}
   {{> lobby}}
+  {{> history}}
+  {{> send}}
 </body>
 
 <template name="hello">
@@ -21,4 +23,22 @@
   <input id="name" type="name" value="" />
   <input type="button" value="Click" {{disabled}} />
   </div>
+</template>
+
+<template name="history">
+  <h1>History</h1>
+<ul>
+{{#each messages}}
+  <li>[{{user_name}}]: {{message}} ({{cdate}})
+    <input type="button" class="modify" value="修正" />
+    <input type="button" class="delete" value="削除" />
+  </li>
+{{/each}}
+</ul>
+</template>
+
+<template name="send">
+  お名前: <input type="text" id="user_name" />
+  コメント: <input type="text" id="message" />
+  <input type="button" id="send" value="投稿" />
 </template>
