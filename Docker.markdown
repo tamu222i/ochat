@@ -1,5 +1,5 @@
 Dockerを使った実行環境
-====================
+=====================
 
 # 構築手順
 Dockerfileを使います。
@@ -16,7 +16,7 @@ docker 1.1.2
 ## 利用手順
 ※上記のdockerを実行するための環境は構築済みのものとして記載します。
 
-1. Dockerイメージの作成
+### Dockerイメージの作成
 ```
 docker build -t ochat/meteor .
 ```
@@ -30,7 +30,7 @@ ochat/meteor        latest              ed1d368399f7        2 days ago          
 centos              centos7             b157b77b1a65        3 weeks ago         243.7 MB
 ```
 
-2. Dockerイメージの実行
+### Dockerイメージの実行
 ```
 docker run -d -p 3000:3000 -i -t ochat/meteor
 ```
@@ -41,7 +41,7 @@ URL: http://[ip address]:3000/
 ※ポート番号はデフォルトで3000番です。
 ※[ip address]の箇所は，boot2dockerの場合はboot2docker ipで調べられます。
 
-3. Dockerイメージの実行を停止する
+### コンテナの実行を停止する
 以下のコマンドを実行して，実行中のコンテナのCONTAINER IDを調べます。
 ```
 docker ps -a
@@ -54,8 +54,29 @@ CONTAINER ID        IMAGE                 COMMAND                CREATED        
 ```
 docker kill 057acbc742fe
 ```
-再度docker ps -a を実行すると，先ほど表示されたコンテナが削除されていることがわかるはずです。
+再度docker ps -a を実行すると，先ほど表示されたコンテナが終了していることがわかるはずです。
+
+
+### コンテナの削除
+尚、コンテナ自体を削除する場合には以下のコマンドを実行します。
+```
+docker rm 057acbc742fe
+```
+
+### Dockerイメージの削除
+```
+docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+ochat/meteor        latest              ed1d368399f7        2 days ago          639.2 MB
+centos              centos7             b157b77b1a65        3 weeks ago         243.7 MB
+```
+
+この実行結果から、イメージIDを取得して、以下のコマンドを実行します。
+```
+docker rmi ed1d368399f7
+```
 
 以上
+
 
 
