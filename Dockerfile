@@ -9,7 +9,7 @@ RUN yum install -y tar git
 RUN curl install.meteor.com | /bin/sh
 
 # clone from github
-RUN git clone https://github.com/hitaka0214/ochat.git /tmp/ochat
+RUN git clone https://github.com/tamu222i/ochat.git /tmp/ochat
 WORKDIR /tmp/ochat
 RUN git checkout dev
 
